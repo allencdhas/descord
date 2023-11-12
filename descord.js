@@ -1,7 +1,7 @@
 require("dotenv").config();
 
-const { fs } = require("node:fs");
-const { path } = require("node:path");
+const fs = require("fs");
+const path = require("path");
 const { Client, Events, GatewayIntentBits } = require("discord.js");
 const Discord = require("discord.js");
 const { Collection } = require("discord.js");
@@ -64,7 +64,7 @@ client.on("message", (message) => {
     }
 
     try {
-      await command.execute(interaction);
+      await command.execute(interaction, client);
     } catch (error) {
       console.error(error);
       if (interaction.replied || interaction.deferred) {
